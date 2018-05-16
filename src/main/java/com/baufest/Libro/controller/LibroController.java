@@ -28,11 +28,14 @@ public class LibroController {
         return libroServicio.getLibro();
     }
 
-    @RequestMapping(value = "Libro/add", method = RequestMethod.POST)
+    @RequestMapping(value = "Libro", method = RequestMethod.POST)
     public String addLibro(@ModelAttribute Libro libro){
         this.libroServicio.addLibro(libro);
         return "Libro Creado Exitosamente";
     }
 
+  /*  @RequestMapping(value = "Libro",method = RequestMethod.DELETE)
+    public
+*/
 
 }
