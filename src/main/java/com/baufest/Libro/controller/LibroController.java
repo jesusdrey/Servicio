@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.awt.print.Pageable;
 import java.util.List;
+import excepciones.*;
 
 
 @RestController
@@ -30,8 +31,14 @@ public class LibroController {
 
     @RequestMapping(value = "Libro", method = RequestMethod.POST)
     public String addLibro(@ModelAttribute Libro libro){
-        this.libroServicio.addLibro(libro);
-        return "Libro Creado Exitosamente";
+        String mensaje = "El libro fue creado exitosamente.";
+        try {
+            this.libroServicio.addLibro(libro);
+        }catch (StringVacioException sve1) {
+            mensaje = sve1.getMessage();
+        }finally {
+            return mensaje;
+        }
     }
 
   /*  @RequestMapping(value = "Libro",method = RequestMethod.DELETE)
