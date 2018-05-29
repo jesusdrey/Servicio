@@ -1,5 +1,7 @@
 package com.baufest.Libro.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,7 @@ public class Libro {
     private Long id;
 
     @Column(name = "nombre")
+    @UniqueElements
     private  String nombre;
 
     @Column(name = "autor")
